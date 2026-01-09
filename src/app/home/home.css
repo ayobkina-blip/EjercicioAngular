@@ -1,0 +1,21 @@
+
+.card-body {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  
+}
+tr{
+    border: solid 2px;  
+}
+
+th {
+  background-color: wheat;
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid wheat;
+}

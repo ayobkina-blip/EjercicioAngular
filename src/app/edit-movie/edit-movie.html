@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>{{ editing ? 'Editar Película' : 'Nueva Película' }}</h2>
+
+  <div class="form-group">
+    <label>Nombre</label>
+    <input [(ngModel)]="movie.name" class="form-control" placeholder="Nombre de la peli">
+  </div>
+
+  <div class="form-group">
+    <label>Descripción</label>
+    <input [(ngModel)]="movie.description" class="form-control" placeholder="De qué trata...">
+  </div>
+
+  <div class="form-group">
+    <label>Año</label>
+    <input type="number" [(ngModel)]="movie.year" class="form-control">
+  </div>
+
+  <div style="margin-top: 15px;">
+    <button (click)="guardar()" class="btn btn-primary">
+      {{ editing ? 'Actualizar' : 'Crear' }}
+    </button>
+  </div>
+</div>
