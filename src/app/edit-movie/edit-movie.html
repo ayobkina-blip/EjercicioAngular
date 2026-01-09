@@ -12,9 +12,21 @@
   </div>
 
   <div class="form-group">
+    <label>Genero</label>
+    <input type="text" [(ngModel)]="movie.genre" class="form-control">
+  </div>
+
+  <div class="form-group">
     <label>Año</label>
     <input type="number" [(ngModel)]="movie.year" class="form-control">
   </div>
+
+  <div class="form-group">
+    <label>Duracion</label>
+    <input type="number" [(ngModel)]="movie.duration" class="form-control">
+  </div>
+
+
 
   <div style="margin-top: 15px;">
     <button (click)="guardar()" class="btn btn-primary">

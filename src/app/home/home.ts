@@ -1,7 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { MovieComponent } from '../movie/movie';
 import { CommonModule } from '@angular/common';
-import { MoviesService } from '../movies.service';
+import { MovieApi } from '../interfaces/movie-api';
+import { Router } from '@angular/router';
+import { ApiService } from '../services/movies-api';
+
 
 @Component({
   selector: 'app-home',
@@ -9,6 +12,7 @@ import { MoviesService } from '../movies.service';
   imports: [MovieComponent, CommonModule],
   template: `
     <div class="card-body">
+      <button class="btn btn-primary btn-sm" (click)="editar()">Nuevo</button>
       <table>
         <thead>
           <tr>
@@ -27,13 +31,23 @@ import { MoviesService } from '../movies.service';
           }
         </tbody>
       </table>
+      
     </div>
   `,
   styleUrl: './home.css',
 })
 export class Home {
-  private ClasePelicula = inject(MoviesService);
-  movies = this.ClasePelicula.getAllMovies();
+  private ClaseApiPeli = inject(ApiService);
+  private router = inject(Router);
+  movies: any[] = [];
 
-  
+  constructor() {
+    this.ClaseApiPeli.obtenerPeliculas().then(datos => {
+      this.movies = datos;
+    });
+  }
+
+  editar() {
+    this.router.navigate(['/form']);
+  }
 }

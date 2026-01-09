@@ -8,7 +8,7 @@ export class MoviesService {
  
   protected Movies: Peli[] = [
      {id: 1, name: "Lo que el viento se llevo",year:1900, description: "Un rollo de ", duration:"" ,genre: "acción"},
-     {id: 2, name: "Solo en casa"             ,year:1900, description: "Un rollo de ", duration:"" ,genre: "comedia"}
+     {id: 2, name: "Solo en casa",year:1900, description: "Un rollo de ", duration:"" ,genre: "comedia"}
     ];
 
   getAllMovies(): Peli[] {
