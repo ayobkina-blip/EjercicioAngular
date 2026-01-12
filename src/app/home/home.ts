@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MovieComponent } from '../movie/movie';
 import { CommonModule } from '@angular/common';
 import { MovieApi } from '../interfaces/movie-api';
@@ -26,8 +26,9 @@ import { ApiService } from '../services/movies-api';
           </tr>
         </thead>
         <tbody>
-          @for (movie of movies; track movie.id) {
+          @for (movie of (movies$ | async); track movie.id) {
             <tr app-movie [pelicula]="movie"></tr>
+              
           }
         </tbody>
       </table>
@@ -36,16 +37,13 @@ import { ApiService } from '../services/movies-api';
   `,
   styleUrl: './home.css',
 })
-export class Home {
+
+export class Home{
   private ClaseApiPeli = inject(ApiService);
   private router = inject(Router);
-  movies: any[] = [];
 
-  constructor() {
-    this.ClaseApiPeli.obtenerPeliculas().then(datos => {
-      this.movies = datos;
-    });
-  }
+  movies$ = this.ClaseApiPeli.obtenerPeliculas();
+
 
   editar() {
     this.router.navigate(['/form']);
