@@ -1,7 +1,6 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { MovieComponent } from '../movie/movie';
 import { CommonModule } from '@angular/common';
-import { MovieApi } from '../interfaces/movie-api';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/movies-api';
 
@@ -26,7 +25,7 @@ import { ApiService } from '../services/movies-api';
           </tr>
         </thead>
         <tbody>
-          @for (movie of (movies$ | async); track movie.id) {
+          @for (movie of movies ; track movie.id) {
             <tr app-movie [pelicula]="movie"></tr>
               
           }
@@ -39,12 +38,18 @@ import { ApiService } from '../services/movies-api';
 })
 
 export class Home{
+
   private ClaseApiPeli = inject(ApiService);
   private router = inject(Router);
+  private cd = inject(ChangeDetectorRef);
+  movies:any=[];
 
-  movies$ = this.ClaseApiPeli.obtenerPeliculas();
-
-
+  ngOnInit() {
+  this.ClaseApiPeli.obtenerPeliculas().then(peliculas => {
+    this.movies = peliculas;
+    this.cd.detectChanges();
+  })
+}
   editar() {
     this.router.navigate(['/form']);
   }
