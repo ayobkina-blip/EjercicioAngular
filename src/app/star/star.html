@@ -1,0 +1,26 @@
+
+<div class="crop"
+     [style.width.px]="starWidth"
+     [title]="rating"
+     (click)="onClick()">
+
+              <div style="width: 95px">
+                <!--<span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span> -->
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+              </div>  
+</div>
+<!-- Para dibujar estrellas en bootstrap debemos hacer:
+nota: npm i bootstrap-icons  + hacer el import en css: @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+  Se dibujan 5 estrellas. cada estrella ocupa 80 pixels en horizontal
+  Se muestra un div y otro dentro con 5 estrellas 
+  Al cambiar el tamaño del div padre, solo se ven las estrellas que se pueden !!   
+-->

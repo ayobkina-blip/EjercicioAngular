@@ -25,7 +25,7 @@ export class EditMovieComponent implements OnInit {
     description: "", 
     duration: "", 
     genre: "",
-    raiting: "",
+    rating: 0,
     imageUrl: "" 
 };
   editing = false;

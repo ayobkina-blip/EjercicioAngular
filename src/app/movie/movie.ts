@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/movies-api';
 import { MovieApi } from '../interfaces/movie-api';
+import { StarComponent } from '../star/star';
+
 
 
 
 @Component({
   selector: '[app-movie]',
-  imports: [CommonModule],
+  imports: [CommonModule, StarComponent],
   template: `
     <td>{{pelicula.id}}</td>
     <td>{{pelicula.name}}</td>
@@ -16,6 +18,11 @@ import { MovieApi } from '../interfaces/movie-api';
     <td>{{pelicula.genre}}</td>
     <td>{{pelicula.year}}</td>
     <td>{{pelicula.duration}}</td>
+      <td>
+        <app-star [rating]='pelicula.rating' [id]='pelicula.id' 
+            (ratingClicked)='ClickSobreEstrellas($event)'>
+        </app-star>
+      </td>
     
     <td>
       <button class="btn btn-primary btn-sm" (click)="eliminar(pelicula.id!)">Eliminar</button>
@@ -39,4 +46,12 @@ export class MovieComponent {
   editar(id:number){
     this.router.navigate(['/form', id]);
   }
+  ClickSobreEstrellas(message: string): void {
+    	 //this.Mensaje = 'Lista de Peliculas: ' + message;
+   	var id:number = Number(message);
+        this.pelicula.rating++;
+
+	this.ClaseApiPeli.guardarPelicula(this.pelicula);
+    
+    }
 }

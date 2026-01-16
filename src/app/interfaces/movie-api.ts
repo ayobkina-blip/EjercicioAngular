@@ -6,7 +6,7 @@ export interface MovieApi {
   genre: string;
   year: number;
   duration: string;
-  raiting: string;
+  rating: number;
   imageUrl: string;
   created_at?: string;
   update_at?: string;

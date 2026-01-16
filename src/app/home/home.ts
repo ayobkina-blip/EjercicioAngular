@@ -21,6 +21,7 @@ import { ApiService } from '../services/movies-api';
             <th>Genero</th>
             <th>Año</th>
             <th>Duracion</th>
+            <th>Rating</th>
             <th>Accion</th>
           </tr>
         </thead>
