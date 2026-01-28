@@ -5,7 +5,8 @@ import { MovieApi} from '../interfaces/movie-api';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost/api.php';
+  //private apiUrl = 'http://localhost/api.php';
+  private apiUrl = 'http://localhost:8080/api.php';
   peliculas = [];
 
   
